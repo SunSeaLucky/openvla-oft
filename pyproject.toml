@@ -12,7 +12,7 @@ authors = [
 description = "Fine-Tuning Vision-Language-Action Models: Optimizing Speed and Success"
 version = "0.0.1"
 readme = "README.md"
-requires-python = ">=3.8"
+requires-python = "==3.10.*"
 keywords = ["vision-language-actions models", "fine-tuning", "robot learning"]
 license = {file = "LICENSE"}
 classifiers = [
@@ -47,17 +47,26 @@ dependencies = [
     "torch==2.2.0",
     "torchvision==0.17.0",
     "torchaudio==2.2.0",
-    "transformers @ git+https://github.com/moojink/transformers-openvla-oft.git",  # IMPORTANT: Use this fork for bidirectional attn (for parallel decoding)
+    "transformers @ git+https://github.com/moojink/transformers-openvla-oft.git", # IMPORTANT: Use this fork for bidirectional attn (for parallel decoding)
     "wandb",
     "tensorflow==2.15.0",
     "tensorflow_datasets==4.9.3",
     "tensorflow_graphics==2021.12.3",
     "dlimp @ git+https://github.com/moojink/dlimp_openvla",
     "diffusers==0.30.3",
-    "imageio",
+    "imageio[ffmpeg]",
     "uvicorn",
     "fastapi",
     "json-numpy",
+    "packaging>=24.2",
+    "ninja>=1.13.0",
+    "flash-attn==2.5.5",
+    "robosuite==1.4.1",
+    "bddl>=3.6.0",
+    "easydict>=1.13",
+    "cloudpickle>=3.1.2",
+    "gym>=0.26.2",
+    "libero"
 ]
 
 [project.optional-dependencies]
@@ -72,6 +81,10 @@ sagemaker = [
     "boto3",
     "sagemaker"
 ]
+
+[[tool.uv.index]]
+url = "https://pypi.org/simple"
+default = true
 
 [project.urls]
 homepage = "https://github.com/moojink/openvla-oft"
@@ -100,3 +113,6 @@ ignore = ["F722"]
 
 [tool.ruff.lint.per-file-ignores]
 "__init__.py" = ["E402", "F401"]
+
+[tool.uv.sources]
+libero = { path = "third_party/LIBERO", editable = true }

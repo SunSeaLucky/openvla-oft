@@ -139,7 +139,6 @@ dmypy.json
 
 # IDE Caches
 .idea/
-.vscode/
 
 # Mac OS
 .DS_Store
@@ -151,3 +150,5 @@ data/
 # Rollout videos and wandb logs
 rollouts/
 wandb/
+
+experiments
