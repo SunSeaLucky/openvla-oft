@@ -33,7 +33,6 @@ dependencies = [
     "accelerate>=0.25.0",
     "draccus==0.8.0",
     "einops",
-    # "flash_attn==2.5.5",      # Here for documentation -- install *AFTER* editable install (follow README)
     "huggingface_hub",
     "json-numpy",
     "jsonlines",
@@ -116,3 +115,6 @@ ignore = ["F722"]
 
 [tool.uv.sources]
 libero = { path = "third_party/LIBERO", editable = true }
+
+[tool.uv.extra-build-dependencies]
+flash-attn = ["torch==2.2.0"]
